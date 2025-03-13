@@ -69,6 +69,13 @@ class _HomePageState extends State<HomePage> {
         height: 20
       ),
 
+      _weatherDetails(),
+        SizedBox(height: 20),
+
+      _forecastCard(),
+      SizedBox(height: 20),
+
+      _footer(),
     ],
     )
     );
@@ -116,5 +123,84 @@ class _HomePageState extends State<HomePage> {
   }
 
 
+  Widget _weatherDetails() {
+    return Column(
+      children: [
+        Text(
+          _weathers?.weatherDescription ?? "",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey),
+        ),
+        SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.ac_unit, color: Colors.blue),
+            SizedBox(width: 5),
+            Text(
+              "${_weathers?.windSpeed?.toStringAsFixed(1)} km/h",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _forecastCard() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Next 7 days",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _forecastItem("Now", "28°C", "10 km/h", Icons.ac_unit, Icons.air),
+                _forecastItem("17.00", "28°C", "10 km/h", Icons.ac_unit, Icons.air),
+                _forecastItem("20.00", "28°C", "10 km/h", Icons.ac_unit, Icons.air),
+                _forecastItem("23.00", "28°C", "10 km/h", Icons.ac_unit, Icons.air),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  
+  Widget _forecastItem(String time, String temp, String wind, IconData weatherIcon, IconData windIcon) {
+    return Column(
+      children: [
+        Text(time, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        Icon(weatherIcon, color: Colors.blue),
+        Text(temp, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.blue)),
+        Icon(windIcon, color: Colors.red),
+        Text(wind, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.red)),
+        Icon(Icons.arrow_downward, color: Colors.black),
+        Text("0%", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
+      ],
+    );
+  }
+
+  Widget _footer() {
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Text("Developed by : MuhDhafa.id")
+        ],
+      ),
+    );
+  }
 
 }
