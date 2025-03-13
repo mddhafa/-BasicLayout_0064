@@ -60,7 +60,15 @@ class _HomePageState extends State<HomePage> {
         height: 20
       ),
      
-      
+      _hari(),
+      SizedBox(
+        height: 20
+      ),
+      _temperature(),
+      SizedBox(
+        height: 20
+      ),
+
     ],
     )
     );
@@ -74,5 +82,39 @@ class _HomePageState extends State<HomePage> {
     ),
     );
   }
+
+  Widget _hari(){
+    DateTime? now = _weathers!.date;
+    return Text(DateFormat('EEEE').format(now!),
+    style: TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      color: Colors.grey,
+    ),
+    );
+  }
+
+  Widget _temperature() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
+          Text(
+            "${_weathers?.temperature?.celsius?.toStringAsFixed(0)}°C",
+            style: TextStyle(
+              fontSize: 80,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Padding(
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          child: Divider(thickness: 2),
+        ),
+        ],
+      ),
+    );
+  }
+
+
 
 }
