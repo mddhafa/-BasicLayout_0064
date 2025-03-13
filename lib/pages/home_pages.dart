@@ -43,4 +43,36 @@ class _HomePageState extends State<HomePage> {
     
   }
 
+  Widget _buildUI() {
+    if (_weathers == null) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }return SizedBox(width: MediaQuery.sizeOf(context).width,
+    height: MediaQuery.sizeOf(context).height,
+    child: Column(
+    mainAxisSize: MainAxisSize.max,
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,  
+    children: [
+      _locationHeader(),
+      SizedBox(
+        height: 20
+      ),
+     
+      
+    ],
+    )
+    );
+  }
+
+  Widget _locationHeader(){
+    return Text(_weathers!.areaName?? "",
+    style: TextStyle(
+      fontSize: 50,
+      fontWeight: FontWeight.bold,
+    ),
+    );
+  }
+
 }
