@@ -26,5 +26,21 @@ class _HomePageState extends State<HomePage> {
     });
   }
   
+  @override
+  Widget build(BuildContext context) {
+    
+    return Scaffold(
+      body: _buildUI(),
+      appBar: AppBar(
+        title: const Text("Weather App"), 
+        centerTitle: true,
+        leading: Icon(Icons.menu),
+        actions: [
+          Icon(Icons.add_box)
+        ]
+        ), 
+    );
+    
+  }
 
 }
