@@ -186,7 +186,7 @@ class _HomePageState extends State<HomePage> {
         Text(temp, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.blue)),
         Icon(windIcon, color: Colors.red),
         Text(wind, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.red)),
-        Icon(Icons.arrow_downward, color: Colors.black),
+        Icon(Icons.umbrella, color: Colors.black),
         Text("0%", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
       ],
     );
